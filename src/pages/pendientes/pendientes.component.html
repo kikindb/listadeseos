@@ -6,5 +6,10 @@
   
   <ion-content padding>
     <h1>Lista de Pendientes</h1>
+    <ul>
+      <li *ngFor="let lista of _listaDeseos.listas">
+        {{lista.name}}
+      </li>
+    </ul>
   </ion-content>
   
