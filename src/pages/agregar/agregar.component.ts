@@ -26,6 +26,11 @@ export class AgregarComponent implements OnInit {
         this.items.push(item);
         this.nombreItem = '';
     }
+    borrar(index: number){
+        if(index > -1){
+            this.items.splice(index,1)
+        }
+    }
 
     ngOnInit() { }
 }
