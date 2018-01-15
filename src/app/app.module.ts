@@ -8,6 +8,7 @@ import { ListaDeseosService } from './services/listadeseos.service';
 
 //Pipes
 import { TitulosDinamicosPipe } from './pipes/titulosDinamicos.pipe';
+import { PendientesPipe } from './pipes/pendientes.pipe';
 
 
 
@@ -25,6 +26,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     TitulosDinamicosPipe,
+    PendientesPipe,
     PendientesComponent,
     TerminadosComponent,
     AgregarComponent,
