@@ -26,31 +26,38 @@ export class DetalleComponent implements OnInit {
 
     actualizar(item: ListaItem){
         item.isComplete = !item.isComplete;
+        let todosCompletos: boolean = true;
+
+        for(let item of this.lista.items){
+          if(!item.isComplete){
+            todosCompletos = false;
+            break;
+          }
+        }
+
+        this.lista.isComplete = todosCompletos;
+
         this._listaDeseos.actualizarData();
     }
 
     borrarLista(){
-        this.showConfirm();
-    }
-    showConfirm() {
-        let confirm = this.alertCtrl.create({
-          title: 'Desea eliminar la lista?',
-          message: 'Esta seguro que desea eliminar esta lista?',
-          buttons: [
-            {
-              text: 'Cancelar',
-              handler: () => {
-                console.log('Disagree clicked');
-              }
-            },
-            {
-              text: 'Aceptar',
-              handler: () => {
-                console.log('Agree clicked');
-              }
+      let confirm = this.alertCtrl.create({
+        title: 'Eliminar la lista '+this.lista.name,
+        message: '¿Esta seguro que desea eliminar esta lista?',
+        buttons: [
+          {
+            text: 'Cancelar'
+          },
+          {
+            text: 'Aceptar',
+            handler: () => {
+              this._listaDeseos.eliminarLista(this.idx);
+              this.navCtrl.pop();
             }
-          ]
-        });
-        confirm.present();
+          }
+        ]
+      });
+      confirm.present();
     }
+
 }
